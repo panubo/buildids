@@ -6,4 +6,6 @@ ADD *.py /usr/src/
 
 EXPOSE 8080
 
+USER www-data
+
 CMD ["/usr/src/app.py", "8080"]
