@@ -5,9 +5,10 @@ import web
 
 from config import STORAGE_PATH, DEBUG
 
+# UUID or SHA2
 urls = (
     '/', 'Index',
-    '/id/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})', 'IdGenerator'
+    '/id/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|[A-Fa-f0-9]{64})', 'IdGenerator'
 )
 
 
@@ -20,7 +21,7 @@ class Index(object):
 class IdGenerator(object):
 
     def GET(self, uuid):
-        uuid = str(uuid)
+        uuid = str(uuid).lower()
         id_storage_path = os.path.join(STORAGE_PATH, "%s.id" % uuid)
 
         if os.path.exists(id_storage_path):
