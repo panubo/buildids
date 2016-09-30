@@ -1,3 +1,4 @@
 import os
 
-STORAGE_PATH = os.getenv('IDGENERATOR_STORAGE_PATH', '')
+STORAGE_PATH = os.getenv('STORAGE_PATH', '')
+DEBUG = bool(os.environ.get('DEBUG', 'False').lower() in ("true", "yes", "t", "1"))
